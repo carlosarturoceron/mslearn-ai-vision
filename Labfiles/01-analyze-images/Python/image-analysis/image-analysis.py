@@ -42,7 +42,15 @@ def AnalyzeImage(image_file, cv_client):
     print('\nAnalyzing', image_file)
 
     # Specify features to be retrieved
+    analysis_options = sdk.ImageAnalysisOptions()
 
+    features = analysis_options.features = (
+        sdk.ImageAnalysisFeature.CAPTION |
+        sdk.ImageAnalysisFeature.DENSE_CAPTIONS |
+        sdk.ImageAnalysisFeature.TAGS |
+        sdk.ImageAnalysisFeature.OBJECTS |
+        sdk.ImageAnalysisFeature.PEOPLE
+    )
 
     # Get image analysis
 
