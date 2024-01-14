@@ -8,7 +8,7 @@ from matplotlib import pyplot as plt
 import numpy as np
 
 # Import namespaces
-
+import azure.ai.vision as sdk
 
 
 def main():
@@ -26,7 +26,7 @@ def main():
             image_file = sys.argv[1]
 
         # Authenticate Azure AI Vision client
-
+        cv_client = sdk.VisionServiceOptions(ai_endpoint, ai_key)
         
         # Analyze image
         AnalyzeImage(image_file, cv_client)
