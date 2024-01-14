@@ -154,7 +154,7 @@ def BackgroundForeground(image_file, cv_client):
     analysis_options = sdk.ImageAnalysisOptions()
 
     # Set the image analysis segmentation mode to background or foreground
-    analysis_options.segmentation_mode = sdk.ImageSegmentationMode.BACKGROUND_REMOVAL
+    analysis_options.segmentation_mode = sdk.ImageSegmentationMode.FOREGROUND_MATTING
         
     image_analyzer = sdk.ImageAnalyzer(cv_client, image, analysis_options)
 
