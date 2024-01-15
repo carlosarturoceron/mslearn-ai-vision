@@ -74,7 +74,7 @@ def GetTextRead(image_file):
 
             for line in result.text.lines:
                 # Return the text detected in the image
-                
+
                 print(line.content)    
 
                 drawLinePolygon = True
@@ -83,6 +83,7 @@ def GetTextRead(image_file):
                 bounding_polygon = ((r[0], r[1]),(r[2], r[3]),(r[4], r[5]),(r[6], r[7]))
 
                 # Return each line detected in the image and the position bounding box around each line
+                print(" Line: '{}', Bounding Polygon: {}".format(line.content, bounding_polygon))
 
 
 
