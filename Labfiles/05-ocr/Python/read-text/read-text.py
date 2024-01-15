@@ -88,6 +88,14 @@ def GetTextRead(image_file):
 
 
                 # Return each word detected in the image and the position bounding box around each word with the confidence level of each word
+                for word in line.words:
+                    r = word.bounding_polygon
+                    bounding_polygon = ((r[0], r[1]),(r[2], r[3]),(r[4], r[5]),(r[6], r[7]))
+                    print("  Word: '{}', Bounding Polygon: {}, Confidence: {}".format(word.content, bounding_polygon,word.confidence))
+
+                    # Draw word bounding polygon
+                    drawLinePolygon = False
+                    draw.polygon(bounding_polygon, outline=color, width=3)
 
 
 
