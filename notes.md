@@ -273,3 +273,117 @@ Document Intelligence:
     * Examples include: receipts, articles, and invoices.
     
 You can access both technologies via the REST API or a client library. In this module, we'll focus on the OCR feature in Image Analysis. If you'd like to learn more about Document Intelligence, reading this module will provide a good introduction.
+
+# Azure AI Video Indexer
+---
+
+Azure Video Indexer is a service to extract insights from video, including face identification, text recognition, object labels, scene segmentations, and more.
+
+It's increasingly common for organizations and individuals to generate content in video format. For example, you might use a cellphone to capture a live event, or you might record a teleconference that combines webcam footage and presentation of slides or documents. As a result, a great deal of information is encapsulated in video files, and you may need to extract this information for analysis or to support indexing for searchability.
+
+In this module, you will learn how to use the Azure Video Indexer service to analyze videos.
+
+After completing this module, you’ll be able to:
+
+    * Describe Azure Video Indexer capabilities.
+    
+    * Extract custom insights.
+    
+    * Use Azure Video Indexer widgets and APIs.
+
+## Capabilities
+
+The Azure Video Indexer service is designed to help you extract information from videos. It provides functionality that you can use for:
+    
+    * Facial recognition - detecting the presence of individual people in the image. This requires Limited Access approval.
+    
+    * Optical character recognition - reading text in the video.
+    
+    * Speech transcription - creating a text transcript of spoken dialog in the video.
+    
+    * Topics - identification of key topics discussed in the video.
+    
+    * Sentiment - analysis of how positive or negative segments within the video are.
+    
+    * Labels - label tags that identify key objects or themes throughout the video.
+    
+    * Content moderation - detection of adult or violent themes in the video.
+    
+    * Scene segmentation - a breakdown of the video into its constituent scenes.
+
+**`The Video Analyzer service provides a portal website that you can use to upload, view, and analyze videos interactively.`**
+
+## Usage
+
+While you can perform all video analysis tasks in the Azure Video Indexer portal, you may want to incorporate the service into custom applications. There are two ways you can accomplish this.
+
+1. Azure Video Indexer widgets
+
+The widgets used in the Azure Video Indexer portal to play, analyze, and edit videos can be embedded in your own custom HTML interfaces. You can use this technique to share insights from specific videos with others without giving them full access to your account in the Azure Video Indexer portal.
+
+Video Analyzer widgets in a custom web page
+
+2. Azure Video Indexer API
+
+Azure Video Indexer provides a REST API that you can use to obtain information about your account, including an access token.
+
+HTTP
+`https://api.videoindexer.ai/Auth/<location>/Accounts/<accountId>/AccessToken`
+
+You can then use your token to consume the REST API and automate video indexing tasks, creating projects, retrieving insights, and creating or deleting custom models.
+
+For example, a GET call to 
+`https://api.videoindexer.ai/<location>/Accounts/<accountId>/Customization/CustomLogos/Logos/<logoId>?<accessToken> `
+REST endpoint returns the specified logo. In another example, you can send a GET request to 
+`https://api.videoindexer.ai/<location>/Accounts/<accountId>/Videos?<accessToken>`, which returns details of videos in your account, similar to the following JSON example:
+
+JSON:
+
+```python
+{
+    "accountId": "SampleAccountId",
+    "id": "30e66ec1b1",
+    "partition": null,
+    "externalId": null,
+    "metadata": null,
+    "name": "test3",
+    "description": null,
+    "created": "2018-04-25T16=50=00.967+00=00",
+    "lastModified": "2018-04-25T16=58=13.409+00=00",
+    "lastIndexed": "2018-04-25T16=50=12.991+00=00",
+    "privacyMode": "Private",
+    "userName": "SampleUserName",
+    "isOwned": true,
+    "isBase": true,
+    "state": "Processing",
+    "processingProgress": "",
+    "durationInSeconds": 13,
+    "thumbnailVideoId": "30e66ec1b1",
+    "thumbnailId": "55848b7b-8be7-4285-893e-cdc366e09133",
+    "social": {
+        "likedByUser": false,
+        "likes": 0,
+        "views": 0
+    },
+    "searchMatches": [],
+    "indexingPreset": "Default",
+    "streamingPreset": "Default",
+    "sourceLanguage": "en-US"
+}
+```
+
+Deploy with ARM template
+
+Azure Resource Manager (ARM) templates are available to create the Azure AI Video Indexer resource in your subscription, based on the parameters specified in the template file.
+
+For a full list of available APIs, see the Video Indexer Developer Portal.
+
+## Results
+
+Timeline pane now includes:
+    
+    * Transcript of audio narration.
+    
+    * Text visible in the video.
+    
+    * Indications of speakers who appear in the video. Some well-known people are automatically recognized by name, others are indicated by number (for example Speaker #1).
