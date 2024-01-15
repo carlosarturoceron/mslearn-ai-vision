@@ -1,5 +1,7 @@
-python-dotenv
 azure-ai-vision
+azure-cognitiveservices-vision-customvision==3.1.0 # for custom vision services
+azure-cognitiveservices-vision-face==0.6.0 # for face services
+python-dotenv
 Pillow
 matplotlib
 numpy
